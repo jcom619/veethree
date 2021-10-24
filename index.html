@@ -1,0 +1,463 @@
+<html lang="">
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+          * {
+              box-sizing: border-box;
+          }
+
+          /* Create two equal columns that floats next to each other */
+          .column {
+              float: left;
+              width: 50%;
+              padding: 10px;
+              height: 300px; /* Should be removed. Only for demonstration */
+          }
+
+          /* Clear floats after the columns */
+          .row:after {
+              content: "";
+              display: table;
+              clear: both;
+          }
+
+          /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+          @media screen and (max-width: 600px) {
+              .column {
+                  width: 100%;
+              }
+          }
+      </style>
+    <title>Scroll effects: Level up your CSS animation skills</title>
+    <!-- The default layout, resets and and text styling -->
+    <link href="stylesheets/main.css" rel="stylesheet">
+    <!-- Custom styling -->
+    <link href="stylesheets/simple.css" rel="stylesheet">
+  </head>
+  <style>/* Create two equal columns that floats next to each other */
+
+  /* Clear floats after the columns */
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+  }</style>
+  <body>
+<iframe frameborder="0" style="position:fixed;z-index:0;width:100%;height:100%;opacity:.3;box-shadow: inset 0 0 90px black;" src="./Text Auto Scroll Vertically Loop (CSS3 Animation) Live Preview.html">
+<!--  <main></main>-->
+    <article class="content">
+
+<!--* BACK      -->
+      <div class="layer three rellax" data-rellax-speed="-4">
+
+          <iframe  id="marquee" style="display:block;position:relative;left:0;top:-25vh;" class="center"  src="https://original-portfolio.glitch.me/marquee.html"  width="100vw" frameborder="0" ></iframe>
+      </div>
+
+
+
+
+
+
+<!--* CENTER     -->
+      <div class="layer two"><iframe
+              class="center"
+              frameborder="0"
+              src="morphotexter.html"
+              width="100%"
+
+      >
+      </iframe></div>
+
+
+
+
+
+<!--* FRONT     -->
+          <div class="column" style="border:2px dashed rgba(200,200,4,0);">
+<iframe framborder="0" width="100%" height="100%" src="https://original-portfolio.glitch.me/clock.html"></iframe>
+
+      <div class="layer one rellax" width="100vw" data-rellax-speed="4">
+
+        <div class="row">
+            <div style="position:relative;" class="share-buttons">
+
+
+
+                <div class="share-button">
+                    <div class="share-button-secondary">
+                        <a target="_blank" href="https://www.google.com" class="share-button-secondary-content">
+                            Email
+                        </a>
+                    </div>
+                    <div class="share-button-primary" style="position:absolute;bottom:-120px;">
+                       <img width="140px" src="https://cdn.glitch.me/d15a0c62-6117-4382-a960-4f51f8fc660a%2Fmail-5709%20(1).svg?v=1634954319517" class="share-button-icon"/>
+                    </div>
+                </div>
+
+                <div class="share-button">
+                    <div class="share-button-secondary">
+                        <div class="share-button-secondary-content">
+                            <a target="_blank" href="https://www.github.com">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="share-button-primary">
+                        <img  src="https://cdn.glitch.me/d15a0c62-6117-4382-a960-4f51f8fc660a%2Ficonmonstr-linkedin-3.svg?v=1634883788802" style="rgba(222,222,200,.6)" class="share-button-icon fa" alt="">
+                    </div>
+                </div>
+
+                <div class="share-button">
+                    <div class="share-button-secondary">
+                        <div class="share-button-secondary-content">
+                            <a target="_blank" href="https://www.github.com">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="share-button-primary">
+                        <img  src="https://cdn.glitch.me/d15a0c62-6117-4382-a960-4f51f8fc660a%2Fgithub.svg?v=1634883840704" style="rgba(222,222,200,.6)" class="share-button-icon fa" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <h2>Column 1</h2>
+<!--            <p>Some text..</p>-->
+
+
+          </div>
+          <div class="column" style="border:2px dashed rgba(200,200,4,0);">
+
+                <h1>col 2</h1>
+          <iframe frameborder="0" style="width:100%;min-height:700px;" src="https://chat-tanooga.glitch.me"></iframe>
+
+          <iframe frameborder="0" style="width:100%;min-height:700px;" src="./comments.html"></iframe>
+
+
+          </div>
+        </div>
+          <h1>Fast!!!</h1>
+
+      </div>
+
+
+
+
+    </article>
+    <script src="javascripts/rellax.min.js"></script>
+    <script>
+        new Rellax('.rellax');
+    </script>
+  </body>
+</html>
+
+
+<!--JS-->
+<!--*    javascript/rellax.min.js
+(function(h,f){"function"===typeof define&&define.amd?define([],f):"object"===typeof module&&module.exports?module.exports=f():h.Rellax=f()})(this,function(){var h=function(f,l){var b=Object.create(h.prototype),g=0,k=0,c=[],p=!1,u=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(a){setTimeout(a,1E3/60)},m=function(a,b,d){return a<=b?b:a>=d?d:a};b.options={speed:-2,center:!1};l&&
+Object.keys(l).forEach(function(a){b.options[a]=l[a]});b.options.speed=m(b.options.speed,-10,10);f||(f=".rellax");var q=document.querySelectorAll(f);if(0<q.length)b.elems=q;else throw Error("The elements you're trying to select don't exist.");var v=function(a){var e=a.getAttribute("data-rellax-percentage"),d=a.getAttribute("data-rellax-speed"),c=e||b.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,f=c+a.getBoundingClientRect().top,h=a.clientHeight||
+a.offsetHeight||a.scrollHeight,g=e?e:(c-f+k)/(h+k);b.options.center&&(g=.5);c=d?m(d,-10,10):b.options.speed;if(e||b.options.center)c=m(d||b.options.speed,-5,5);e=Math.round(100*c*(1-g));a=a.style.cssText;d="";0<=a.indexOf("transform")&&(d=a.indexOf("transform"),d=a.slice(d),d=(g=d.indexOf(";"))?" "+d.slice(11,g).replace(/\s/g,""):" "+d.slice(11).replace(/\s/g,""));return{base:e,top:f,height:h,speed:c,style:a,transform:d}},r=function(){var a=g;g=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||
+document.body.parentNode||document.body).scrollTop;return a!=g?!0:!1},t=function(){r()&&!1===p&&n();u(t)},n=function(){for(var a=0;a<b.elems.length;a++){var e=" translate3d(0,"+(Math.round(100*c[a].speed*(1-(g-c[a].top+k)/(c[a].height+k)))-c[a].base)+"px,0)"+c[a].transform;b.elems[a].style.cssText=c[a].style+"-webkit-transform:"+e+";-moz-transform:"+e+";transform:"+e+";"}};b.destroy=function(){for(var a=0;a<b.elems.length;a++)b.elems[a].style.cssText=c[a].style;p=!0};(function(){k=window.innerHeight;
+r();for(var a=0;a<b.elems.length;a++){var e=v(b.elems[a]);c.push(e)}window.addEventListener("resize",function(){n()});t();n()})();return b};return h});
+-->
+
+<!--CSS1 main-->
+<!--* main.css
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+body {
+  margin: 0;
+}
+article, aside, footer, header, nav, section, figcaption, figure, main {
+  display: block;
+}
+figure {
+  margin: 1em 40px;
+}
+[hidden] {
+  display: none;
+}
+/* Columns and layout */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+#__bs_notify__ {
+  display: none !important;
+}
+main {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1280px;
+  width: 100%;
+}
+.module {
+  margin: 8rem 0;
+  padding: 2rem;
+}
+.flex-grid {
+  display: flex;
+  justify-content: center;
+}
+.col {
+  flex: 1;
+  padding: 2rem;
+  position: relative;
+}
+.col:nth-child(n+1) {
+  margin-left: 2rem;
+}
+.col:last-child {
+  margin-right: 2rem;
+}
+.col.vertical-align {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.single-column .col {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60rem;
+  width: 100%;
+}
+@media (max-width: 680px) {
+  .flex-grid {
+    display: block;
+  }
+  .single-column .col {
+    margin: 2rem;
+    width: auto;
+  }
+}
+/* Text styles */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+html {
+  background: #F9FCFF;
+  color: #333;
+  font-size: 10px;
+  font-family: 'Avenir Next', Open Sans, sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-size: 1.8rem;
+}
+h2, h3 {
+  margin-bottom: 0;
+}
+h1 {
+  font-size: 4.8rem;
+}
+h2 {
+  font-size: 2.4rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+h4, h5 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+p, li {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+footer {
+  background: #333;
+  color: #fff;
+  padding: 6rem;
+  text-align: center;
+}
+footer a {
+  color: #fff;
+}
+footer ul {
+  margin: 0;
+  padding: 0;
+}
+footer li {
+  display: inline-block;
+  margin: 0;
+}
+footer li::before {
+  content: "\2022 \A0";
+}
+footer li:first-child::before {
+  content: "";
+}
+/* Custom styling for the content */
+.rocky-image {
+  width: 100%;
+  max-width: 54rem;
+}
+.badge {
+  border-radius: 50%;
+  background: green;
+  display: flex;
+  flex-shrink: 0;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  min-width: 10rem;
+  width: 10rem;
+  position: relative;
+  box-shadow: 0 .2rem .1rem .1rem rgba(0,0,0,0.2);
+}
+.badge::before {
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  right: 2.5px;
+  bottom: 2.5px;
+  left: 2.5px;
+  border: 6px solid #fff;
+}
+.badge.first {
+  background: red;
+}
+.badge.third {
+  background: yellow;
+}
+.rocky-badge {
+  height: 70px;
+  z-index: 10;
+}
+.rocky-image-small {
+  width: 150%;
+  margin-left: -2rem;
+}
+.options {
+  margin: 8em 0;
+}
+.options .option {
+  border-radius: .2em;
+  border: 1px solid transparent;
+}
+.options .badge, .options h2, .options p {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+}
+.options .more-info {
+  left: 10%;
+  right: 10%;
+}
+.options .call-to-action {
+  display: inline-block;
+  margin: 1em auto;
+}
+.options h2 {
+  top: 5em;
+}
+.options p {
+  top: 7em;
+  max-width: 80%;
+}
+.options .col {
+  height: 18em;
+  margin: 2em 0;
+  text-align: center;
+  width: 20em;
+}
+.options .col p:nth-child(2) {
+  flex-grow: 1;
+}
+.section-title {
+  text-align: center;
+}
+.button {
+  background: #269300;
+  border-radius: .25em;
+  color: #fff;
+  display: inline-block;
+  padding: .25em .5em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+html, body {
+  background: #000;
+  color: #aaa;
+}
+
+a {
+  text-decoration: underline;
+}
+
+.content {
+  margin: 10em auto;
+  max-width: 740px;
+  width: 80%;
+}
+
+p {
+  font-size: 3em;
+  margin: 6em auto;
+}
+-->
+
+<!--CSS2 simple-->
+<!--*
+html, body {
+  background: #fff;
+  color: #fff;
+  height: 300vh;
+}
+
+.content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  width: 100vw;
+}
+
+div {
+  background: #333;
+  font-size: 38px;
+  font-weight: bold;
+  height: 300px;
+  line-height: 300px;
+  margin: 1em;
+  text-align: center;
+  width: 300px;
+}
+
+.one {
+  background-color: #EC368D;
+}
+
+.two {
+  background-color: #333;
+}
+
+.three {
+  background-color: #440381;
+}
+-->
