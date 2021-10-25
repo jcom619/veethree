@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://cdpn.io/jcom619/fullpage/VwzwpEX -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - A Simple CRUD app built in ReactJS.</title>
+  
+  
+  
+  
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous:wght@100&display=swap");
+* {
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  transition: all 0.5s ease-in-out;
+  /*background: none;*/
+  overflow: hidden;
+  /*box-shadow: inset 10px 10px 25px black, inset 10px 10px 160px slategray,inset -10px -10px 25px black, inset -10px -10px 160px slategray;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+#wrapper {
+  overflow: auto;
+  height: 100vh;
+  padding: 40px 8%;
+  /*background-image: url("");*/
+  text-shadow: 1px 1px 2px black, -1px -2px 2px white;
+  max-width: 100%;
+  /*margin-top: -30px;*/
+}
+
+#wrapper * {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+
+#app-title-wrapper {
+  /*background: url(https://cdn.glitch.com/745f9a59-9ec4-49ad-b0eb-487b57bda865%2Fblurred.gif?v=1626034853756);*/
+  /*background-size: cover;*/
+  fony-family: "Righteous";
+  display: block;
+  position: fixed;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  top: -10px;
+  font-size: 8vw;
+  font-weight: 400;
+  padding-bottom: 1vh;
+  top: -2vh;
+  left: 1vw;
+  right: 1vw;
+  margin-bottom: 0;
+  text-align: center;
+  border: 3px solid darkred;
+  border-radius: 18px;
+  background: #cdcdcd;
+  box-shadow: 0 -10px 1px 10px #282828, 0 10px 30px 20px rgba(0, 0, 0, 0.5), inset -12px -15px 30px rgba(0, 0, 0, 0.1), inset 0 -9px 1px -20px rgba(70, 0, 0, 0.1);
+  /*box-shadow: 0 40px 30px rgba(255,255,255,1), 0 -60px 50px 20px rgba(0,0,0,1);*/
+  position: fixed;
+}
+
+#app-foot-wrapper {
+  /*background: url(https://cdn.glitch.com/745f9a59-9ec4-49ad-b0eb-487b57bda865%2Fblurred.gif?v=1626034853756);*/
+  /*background-size: cover;*/
+  fony-family: "Righteous";
+  display: block;
+  position: fixed;
+  padding-left: 30px;
+  bottom: -1px;
+  font-size: 18px;
+  color: green;
+  font-weight: 400;
+  padding-bottom: 1vh;
+  left: 1vw;
+  right: 1vw;
+  margin-bottom: 0;
+  text-align: center;
+  border: 3px solid darkred;
+  border-radius: 24px;
+  background: #cdcdcd;
+  box-shadow: 0 -6px 30px 1px #282828, 0 -20px 50px rgba(0, 0, 0, 0.5), inset -12px -15px 30px rgba(0, 0, 0, 0.1), inset 0 -9px 1px -20px rgba(70, 0, 0, 0.1);
+  /*box-shadow: 0 40px 30px rgba(255,255,255,1), 0 -60px 50px 20px rgba(0,0,0,1);*/
+  position: fixed;
+}
+
+#app-title-wrapper span.title span {
+  color: darkred;
+  text-shadow: -1px -1px 2px black, 1px 1px 2px whitesmoke;
+  font-style: italic;
+}
+
+#app-title-wrapper span.desc {
+  display: block;
+  padding-bottom: 0;
+  margin-left: 30px;
+  /*margin-top: 10px;*/
+  color: gray;
+  max-width: 300px;
+}
+
+#app-title-wrapper span.desc:before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: none;
+  position: absolute;
+  left: calc(-100% + 2.5%);
+  bottom: 16px;
+}
+
+#comments-list {
+  margin-top: 140px;
+  margin-bottom: 140px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.commentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  padding: 20px;
+  background: rgba(112, 128, 144, 0.15);
+  font-family: Ubuntu, sans-serif;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1), -2px -3px 2px rgba(255, 255, 255, 0.1), inset -12px -15px 30px rgba(255, 255, 255, 0.1), inset 10px 10px 40px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s ease-in-out;
+  width: 90%;
+  /*max-width: 300px;*/
+  /*max-height: 10vh;*/
+  overflow: auto;
+  text-align: center;
+}
+
+p {
+  color: white;
+}
+
+@media screen and (max-width: 689px) {
+  .commentWrapper, .commentAddBtn {
+    max-width: 100%;
+  }
+}
+.commentWrapper:hover {
+  background: rgba(22, 20, 24, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.commentWrapper:hover {
+  color: red;
+}
+
+@media screen and (max-width: 414px) {
+  .commentWrapper {
+    height: auto;
+    box-sizing: border-box;
+  }
+}
+.commentWrapper textarea {
+  width: 100%;
+  height: 60px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 414px) {
+  .commentWrapper textarea {
+    margin-bottom: 5px;
+  }
+}
+.commentWrapper .commentText p {
+  display: flex;
+  /*max-width: 300px;*/
+  text-shadow: -1px -1px 2px black, 1px 1px 2px whitesmoke;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 414px) {
+  .commentWrapper .commentBtns button {
+    width: 100%;
+    display: none;
+    transition: width 0.2s ease-in-out;
+  }
+}
+button {
+  text-shadow: 1px 1px 2px black, -1px -1px 3px white;
+  font-family: Roboto;
+  font-size: 24px;
+  margin: 30px;
+  border: none;
+  padding: 1px 2px;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  /*text-shadow: -1px -1px 1px black, 1px 0px 2px red,10px 10px 5px black;*/
+  /*transition: all 0.2s ease-in-out;*/
+}
+
+button.btnPrimary {
+  background: none;
+}
+
+button.btnDanger {
+  background: none;
+}
+
+button.btnDanger:hover {
+  text-shadow: -1px -1px 1px black, 1px -2px 5px darkred, 10px 10px 5px black;
+  background: transparent;
+  color: #9b0a09;
+  transition: all 0.2s ease-in-out;
+}
+
+button.btnSuccess e {
+  background: rgba(0, 0, 0, 0);
+  padding: 25px;
+  font-size: 20px;
+}
+
+button.btnSuccess:hover {
+  text-shadow: -1px -1px 1px black, 1px -2px 1px white, 10px 10px 5px black, 0 0 15px black;
+  box-shadow: inset 0 0 20px black;
+  color: #056409;
+  font-size: 160px;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+button.btnDefault {
+  background: none;
+}
+
+.commentAddWrapper {
+  background: none;
+  padding: 30px;
+  width: auto;
+  display: block;
+  border: 0;
+}
+
+.commentAddWrapper .commentAddBtn {
+  cursor: url(./img/add-cursor2.png) 20 20, auto;
+  position: absolute;
+  padding: 2px;
+  border: none;
+  width: 100px;
+  text-align: center;
+  background: none;
+  box-shadow: none;
+  color: #ccc;
+  font-size: 42px;
+  font-weight: 100;
+}
+
+.commentAddBtn {
+  cursor: url(./img/add-cursor2.png) 20 20, auto;
+  position: absolute;
+  background: none;
+  top: 50px;
+  left: 40vw;
+  font-size: 1vw;
+  width: 10vw;
+  animation: pulserText;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+}
+
+.commentAddBtn:hover {
+  cursor: url(./img/add-cursor2.png) 20 20, auto;
+  color: yellow;
+  transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 414px) {
+  .commentAddWrapper .commentAddBtn {
+    max-width: 60px;
+    max-height: 60px;
+    font-size: 30px;
+    padding: 0;
+  }
+}
+.commentAddWrapper .commentAddBtn span {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.commentAddWrapper .commentAddModal {
+  /* padding:  5em;*/
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 15%;
+  right: 15%;
+  z-index: 1;
+  width: 70vw;
+  /*max-width: calc(100% - 30px);*/
+  height: 70vh;
+  font-family: Ubuntu;
+  transition: margin 0.2s ease;
+}
+
+.commentAddWrapper .commentAddModal.opened {
+  animation: modalOpened;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  visibility: visible;
+  transition: all 2s ease;
+}
+
+.commentAddWrapper .commentAddModal.closed {
+  animation: modalClosed;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  transition: all 2s ease;
+  margin-left: 200%;
+  visibility: hidden;
+  transition: opacity 2s ease-out;
+}
+
+textarea {
+  height: 265px;
+  width: 88%;
+  background: rgba(25, 25, 25, 0.55);
+  box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.75), inset -10px -10px 20px rgba(0, 0, 0, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.15), -2px -7px 10px 1px rgba(0, 0, 0, 0.15), 5px 3px 20px black, 5px -5px 20px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  outline: none;
+  font-size: 20px;
+}
+
+.commentAddWrapper .commentAddModal h2 {
+  color: white;
+  font-weight: 400;
+  transition: all 5s ease;
+}
+
+.commentAddWrapper .commentAddModal form {
+  padding: 1px;
+}
+
+.commentAddWrapper .commentAddModal form textarea {
+  max-height: 100%;
+  border-radius: 15px;
+  border: 0;
+}
+
+.commentAddWrapper .commentAddModal form button {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 90px;
+}
+
+@keyframes modalOpened {
+  0% {
+    margin-right: -100%;
+    visibility: visible;
+  }
+  60% {
+    margin-right: 0;
+    width: 50vw;
+  }
+  100% {
+    width: 70vw;
+  }
+}
+@keyframes modalClosed {
+  0% {
+    opacity: 1;
+    display: flex;
+    visibility: visible;
+    transition: opacity 2s ease-out;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transition: opacity 2s ease-out;
+  }
+}
+@keyframes pulserText {
+  25% {
+    text-shadow: -1px -1px 1px black, 1px -2px 1px white, 10px 10px 5px black;
+  }
+  75% {
+    text-shadow: -1px -1px 3px yellow, -1px -1px 1px black, 1px -2px 11px red, 10px 10px 5px black;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+  <!-- <div id="wrapper">
+  <h1 id="app-title-wrapper">
+    <span style="position:relative;z-index:100;" class="title">Comment<span>Section</span></span>
+    <div class="" class="padding-right:40vw;commentAddBtn animate__animated animate__bounce animate__delay-6s;box-shadow:;" onClick={toggleModal}>
+      <p  style="position:relative;z-index:50;font-family:Lato;display:flex;text-align:center;margin-left:-10vw;margin-right:12vw;color:rgba(0,0,0,0.02),-1px -1px 10px black, inset 1px 1px 100px white;margin-bottom:-35px;" ><h3 class="word-box" style="position:relative;z-index:51;text-align:center;font-size:5.5vw;box-shadow: -1px -1px 10px black, 1px 1px 10px white, 20px 40px 50px rgba(112,128,144,1),-40px 40px 50px rgba(112,128,144,1), 20px -40px 50px rgba(112,128,144,1),-20px -40px 50px rgba(112,128,144,1);margin-left:-10vw;margin-right:12vw;" >leave a thought, opinion or constructive critique.<hr>Please be Professional </h3></p>
+      <span ></span>
+<!--       <p><em  style="position:relative;margin-bottom:10%px;font-size:20px;"> ...Please be Professional</em></p> 
+    </div>
+    <span class="desc"></span>
+   </h1>
+
+  <span id="main"></span>
+</div>
+ -->
+
+
+
+  
+  <title>comment-component</title>
+  <link rel="stylesheet" href="./style.css">
+
+
+
+<!-- partial:index.partial.html -->
+<div id="wrapper">
+  <h1 id="app-title-wrapper">
+    <span class="title">Comment<span>Section</span></span>
+<!--    <div class="commentAddBtn" onClick={toggleModal}>-->
+<!--          <span>add new</span>-->
+<!--        </div>-->
+<!--     <span></span> -->
+  </h1>
+  <div id="main"><div><div id="comments-list"><div class="commentAddWrapper"><div class="commentAddBtn"><span>+</span></div><div class="commentAddModal closed "><h2>New Comment</h2><form><textarea></textarea><br><button type="button" class="btnDefault">Cancel</button><button type="submit" class="btnSuccess">Submit</button></form></div></div></div></div></div>
+  <h1 id="app-foot-wrapper">
+    <span class=""><p>please be respectful and professional</p></span>
+<!--    <div class="commentAddBtn" onClick={toggleModal}>-->
+<!--          <span>add new</span>-->
+<!--        </div>-->
+<!--     <span></span> -->
+  </h1>
+</div>
+  
+<!-- partial -->
+  <script src="./react.development.js"></script>
+<script src="./react-dom.development.js"></script><script src="./script.js"></script>
+  <script>
+  // Get the input field
+var input = document.getElementById("Input");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.querySelector(".btnSuccess").click();
+  }
+});
+  </script>
+
+
+    <script src="./stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+  <script src="./react.development.js"></script>
+<script src="./react-dom.development.js"></script>
+      <script id="rendered-js">
+const CONFIG = {
+  localStoreName: 'commentor-uzor' };
+
+
+// main app component
+class CommentApp extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      comments: [] };
+
+  }
+
+  componentDidMount() {
+    this.getComments();
+  }
+
+  getComments() {
+    let comments = JSON.parse(window.localStorage.getItem(CONFIG.localStoreName));
+
+    if (!(comments instanceof Array)) {
+      comments = [{
+        text: "This is a sample comment" }];
+
+      window.localStorage.setItem(CONFIG.localStoreName, JSON.stringify(comments));
+    };
+
+    this.setState({
+      comments: comments });
+
+  }
+
+  addToComments(data) {
+    let self = this;
+
+    self.setState({
+      comments: self.state.comments.concat(data) });
+
+
+    setTimeout(function () {
+      window.localStorage.setItem(CONFIG.localStoreName, JSON.stringify(self.state.comments));
+    }, 100);
+  }
+
+  render() {
+    return /*#__PURE__*/(
+      React.createElement("div", { id: "comments-list" },
+
+      this.state.comments.map(function (comment, index) {
+        return /*#__PURE__*/React.createElement(CommentViewComponent, { key: index, comment: comment });
+      }), /*#__PURE__*/
+
+      React.createElement(CommentAddComponent, { onCommentAdded: this.addToComments.bind(this) })));
+
+
+  }}
+
+
+
+// view comment component
+class CommentViewComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comment: props.comment,
+      isEditing: false,
+      shouldHide: false };
+
+  }
+
+  render() {
+    if (this.state.shouldHide) {
+      return null;
+    }
+
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "commentWrapper" }, /*#__PURE__*/
+      React.createElement("div", { className: "commentText" },
+
+      !this.state.isEditing ? /*#__PURE__*/
+      React.createElement("p", null, this.state.comment.text) : /*#__PURE__*/
+
+      React.createElement("textarea", { defaultValue: this.state.comment.text })),
+
+
+
+
+
+      !this.state.isEditing ? /*#__PURE__*/
+
+      React.createElement("div", { className: "commentBtns" }, /*#__PURE__*/
+      React.createElement("button", { onClick: this.toggleEditComment.bind(this), className: "btnPrimary" }, "Edit"), /*#__PURE__*/
+      React.createElement("button", { onClick: this.deleteComment.bind(this), className: "btnDanger" }, "Delete")) : /*#__PURE__*/
+
+
+
+
+      React.createElement("div", { className: "commentBtns" }, /*#__PURE__*/
+      React.createElement("button", { onClick: this.toggleEditComment.bind(this), className: "btnDefault" }, "Cancel"), /*#__PURE__*/
+      React.createElement("button", { onClick: this.updateComment.bind(this), className: "btnSuccess" }, "Update"))));
+
+
+
+
+  }
+
+  toggleEditComment() {
+    let isEditing = this.state.isEditing;
+
+    this.setState({
+      isEditing: !isEditing });
+
+  }
+
+
+  deleteComment() {
+    this.setState({
+      shouldHide: true });
+
+  }
+  // deleteComment() {   
+  // this.setState({
+  //     this.state.comments.pop(data)
+  //   });}
+  updateComment(e) {
+    let textElement = e.target.closest('.commentWrapper').getElementsByTagName('textarea')[0];
+    let comment = this.state.comment;
+    comment.text = textElement.value;
+
+    this.setState({
+      comment: comment,
+      isEditing: false });
+
+  }}
+
+
+
+// add comment component
+class CommentAddComponent extends React.Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      modalOpen: false };
+
+  }
+
+  toggleModal() {
+    let modalOpen = this.state.modalOpen;
+
+    this.setState({
+      modalOpen: !modalOpen });
+
+  }
+
+  addComment(e) {
+    e.preventDefault();
+
+    let textElement = e.target.getElementsByTagName('textarea')[0],
+    text = textElement.value.trim();
+
+    this.props.onCommentAdded({
+      text: text });
+
+
+    this.setState({
+      modalOpen: false });
+
+
+    textElement.value = null;
+  }
+
+  render() {
+    let modalClasses = 'commentAddModal ';
+    modalClasses += this.state.modalOpen ? 'opened ' : 'closed ';
+
+    return /*#__PURE__*/(
+      React.createElement("div", { className: "commentAddWrapper" }, /*#__PURE__*/
+      React.createElement("div", { className: "commentAddBtn", onClick: this.toggleModal.bind(this) }, /*#__PURE__*/
+      React.createElement("span", null, "+")), /*#__PURE__*/
+
+      React.createElement("div", { className: modalClasses }, /*#__PURE__*/
+      React.createElement("h2", null, "New Comment"), /*#__PURE__*/
+      React.createElement("form", { onSubmit: this.addComment.bind(this) }, /*#__PURE__*/
+      React.createElement("textarea", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/
+      React.createElement("button", { type: "button", className: "btnDefault", onClick: this.toggleModal.bind(this) }, "Cancel"), /*#__PURE__*/
+      React.createElement("button", { type: "submit", className: "btnSuccess" }, "Submit")))));
+
+
+
+
+  }}
+
+
+
+//
+ReactDOM.render( /*#__PURE__*/
+React.createElement("div", null, /*#__PURE__*/
+React.createElement(CommentApp, null)),
+
+document.getElementById('main'));
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+
+ 
+</body></html>
