@@ -1,0 +1,199 @@
+/*iframe {*/
+/*  border:2px dashed purple;*/
+/*}*/
+
+
+html, body {
+  /*background: grey;*/
+  color: #fff;
+  height: 300vh;300px
+
+}
+#marquee {
+  position: absolute;
+  width: 100vw;
+  top:0;
+}
+.content {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  width: 100vw;
+}
+a {
+  text-decoration: none;
+}
+.layer {
+  position:absolute;
+  /*background: #333;*/
+  font-size: 38px;
+  font-weight: bold;
+  width: 100vw;
+  height:100vh;
+  line-height: 66vh;
+  margin-bottom: -99vh;
+  text-align: center;
+}
+
+.carousel {
+  width:94vw;
+  margin-left:0;
+  right:0;
+
+}
+
+.one {
+  width: 100vw;
+
+  /*background-color: rgba(100,0,0,0.4);*/
+}
+
+/*.two {*/
+/*  width: 100vw;*/
+/*  background-color: rgba(0,100,0,0.4);*/
+/*}*/
+
+/*.three {*/
+/*  width: 100vw;*/
+/*  background-color: rgba(0,0,100,0.4);*/
+/*}*/
+/*margin-top:30px;*/
+/*!* Create two equal columns that floats next to each other *!*/
+/*.column {*/
+/*  float: left;*/
+/*  width: 50%;*/
+/*  padding: 10px;*/
+/*  height: 300px; !* Should be removed. Only for demonstration *!*/
+/*}*/
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 100%;
+  }
+}
+
+/*buttons*/
+
+
+.share-buttons {
+  position: absolute;
+  width: 100px;
+  height: 212px;
+  padding-left: 135px;
+  top: 30%;
+  left: 2%;
+  margin-left: -150px;
+  margin-top: -160px;
+}
+
+.share-buttons .share-button {
+  float: left;
+  margin-top: 55px;
+}
+
+.share-buttons .share-button:first-child {
+  margin-top: 0;
+}
+
+.share-buttons .share-button:after {
+  clear: both;
+  display: table;
+}
+
+.share-button {
+  display: block;
+  position: relative;
+  height: 30px;
+}
+
+.share-button:hover {
+  cursor: pointer;
+}
+
+.share-button:hover .share-button-primary {
+  box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.share-button:hover .share-button-secondary-content {
+  transform: translate3d(0, 0, 0);
+}
+
+.share-button-primary {
+  position: absolute;
+  background: transparent;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  left: 15px;
+  top: 50%;
+  margin-top: -5px;
+}
+
+.share-button-icon {
+  border-radius: 50%;
+  border: 6px solid white;
+  box-shadow:0 0 6px black,inset 0 0 26px black;
+  display: block;
+  background-color: red;
+  color: whitesmoke;
+  position: absolute;
+  width: 60px;
+  line-height: 60px;
+  font-size: 36px;
+  text-align: center;
+  text-shadow: 0 0 6px black;
+  margin-top: 40px;
+}
+a {
+  text-decoration: none;
+  color: darkred;
+}
+a:hover {
+  color:darkgoldenrod;
+}
+.share-button-secondary {
+  overflow: hidden;
+  margin-left: 65px;
+  top: 50px;
+  height: 50px;
+}
+
+.share-button-secondary-content {
+  position:relative;
+  z-index:557656;
+  font-family: sans-serif;
+  font-size: 40px;
+  display: block;
+  height: 60px;
+  text-align: left;
+  padding-left: 24px;
+  padding-bottom:40px;
+  padding-right: 18px;
+  line-height: 60px;
+  text-shadow: 1px 1px 3px black;
+  border-radius: 50%;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 175ms ease;
+}
+img {
+  width:55px;
+  left:0;
+  top:1px;
+}
